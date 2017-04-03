@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <fragment
+        android:id="@+id/fragment"
+        android:name="jasonmcdonald.personaltrainer.UserFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout="@layout/fragment_user"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sessions"
+        />
+
+    <TextView
+        android:id="@+id/custNameText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:text="Customer Name"/>//TODO: make auto completed
+
+    <TextView
+        android:id="@+id/compSessionsLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:text="@string/completed"/>
+
+    <ScrollView
+        android:id="@+id/compSessionsList"
+        android:layout_width="match_parent"
+        android:layout_height="173dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/schedSessionsLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:text="@string/scheduled"/>
+
+    <ScrollView
+        android:id="@+id/scheduledSessionsList"
+        android:layout_width="match_parent"
+        android:layout_height="153dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/compSessionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.09"
+            android:text="@string/complete"/>
+
+        <Button
+            android:id="@+id/addSessionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.09"
+            android:text="@string/add"/>
+    </LinearLayout>
+</LinearLayout>

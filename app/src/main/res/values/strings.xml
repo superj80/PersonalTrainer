@@ -11,11 +11,42 @@
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
+        completions."</string>
     <string name="personal_trainer">PERSONAL TRAINER</string>
     <string name="good_login">Welcome!</string>
     <string name="bad_login">That username/password combination is invalid.</string>
     <string name="user_name">jdoe</string>
     <string name="password">welcome1</string>
-    </string>
+    <string name="logged_in">Logged in:  </string>
+    <string name="scheduled">SCHEDULED</string>
+    <string name="completed">COMPLETED</string>
+    <string name="sessions">SESSIONS</string>
+    <string name="payment">PAYMENT</string>
+    <string name="new_customer">NEW TRAINEE!</string>
+    <string name="customers">TRAINEES</string>
+    <string name="complete">COMPLETE</string>
+    <string name="add_session">ADD A SESSION!</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="pay_for_session">Pay For Session</string>
+    <string name="complete_session">Complete Session</string>
+    <string name="previous">PREV</string>
+    <string name="next">NEXT</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="dob">D.O.B.</string>
+    <string name="phone">Phone</string>
+    <string name="email">Email</string>
+    <string name="take_a_picture">Take Picture</string>
+    <string name="add">ADD</string>
+    <string name="card_number">Card Number</string>
+    <string name="cvv">CVV</string>
+    <string name="exp_date">Expiration Date</string>
+    <string name="em_rcpt">Email Receipt</string>
+    <string name="prnt_rcpt">Print Receipt</string>
+    <string name="submit">SUBMIT</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

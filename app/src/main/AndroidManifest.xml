@@ -25,6 +25,20 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".AddSessionActivity">
+        </activity>
+        <activity android:name=".CompleteActivity">
+        </activity>
+        <activity android:name=".CustomersActivity">
+        </activity>
+        <activity android:name=".HomeActivity">
+        </activity>
+        <activity android:name=".NewCustomerActivity">
+        </activity>
+        <activity android:name=".PaymentActivity">
+        </activity>
+        <activity android:name=".SessionsActivity">
+        </activity>
     </application>
 
 </manifest>

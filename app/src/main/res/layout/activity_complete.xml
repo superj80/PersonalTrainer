@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:weightSum="1">
+    <fragment
+        android:id="@+id/fragment"
+        android:name="jasonmcdonald.personaltrainer.UserFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout="@layout/fragment_user"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/complete_session"
+        />
+
+    <AutoCompleteTextView
+        android:id="@+id/nameAutoCompleteTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Customer Name"/>//TODO: make auto completed
+
+    <AutoCompleteTextView
+        android:id="@+id/dateAutoCompleteTextView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Session Date"/>//TODO: make auto completed
+
+    <Button
+        android:id="@+id/signButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.49"
+        android:text="This is a button but it needs to be a sig capture thing."/>//TODO: make a sig thing
+
+    <Button
+        android:id="@+id/compButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.16"
+        android:text="@string/complete_session"/>
+</LinearLayout>
