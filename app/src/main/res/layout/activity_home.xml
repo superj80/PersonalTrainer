@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:weightSum="1">
+    <fragment
+        android:id="@+id/fragment"
+        android:name="jasonmcdonald.personaltrainer.UserFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout="@layout/fragment_user"/>
+
+
+    <Button
+        android:id="@+id/newCustButton"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:onClick="onNewClick"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:text="@string/new_customer" />
+
+    <Button
+        android:id="@+id/custListButton"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:onClick="onCustClick"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:text="@string/customers"/>
+
+
+</LinearLayout>

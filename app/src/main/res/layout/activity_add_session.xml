@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:weightSum="1"
+              android:orientation="vertical">
+
+    <fragment
+        android:id="@+id/fragment"
+        android:name="jasonmcdonald.personaltrainer.UserFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout="@layout/fragment_user"/>
+    <TextView
+        android:textAlignment="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_session"
+        android:textSize="25sp"
+        />
+
+    <TextView
+        android:id="@+id/custNameDisplay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:text="Customer Name"/>
+
+    <EditText
+        android:id="@+id/sessionDateText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="date"
+        android:hint="@string/date"/>
+
+    <EditText
+        android:id="@+id/sessionTimeText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="time"
+        android:hint="@string/time"/>
+
+    <Button
+        android:id="@+id/payButton"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:layout_margin="15dp"
+        android:onClick="onGoPayClick"
+        android:text="@string/pay_for_session"
+        />
+
+
+
+
+</LinearLayout>
