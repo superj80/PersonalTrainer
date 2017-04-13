@@ -1,6 +1,7 @@
 package jasonmcdonald.personaltrainer;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -33,22 +34,19 @@ public class NewCustomerActivity extends AppCompatActivity implements UserFragme
 
     public boolean onOptionsItemSelected(MenuItem item)
     {
-        FragmentManager fm = getSupportFragmentManager();
-        LogoutFragment dialog = new LogoutFragment();
-        dialog.show(fm, "Logout");
-        return true;
-
-        //THIS CODE IS FOR AN ALTERNATIVE LOG-OUT TOAST INSTEAD OF THE USER-CONFIRMATION DIALOG
-        /*switch(item.getItemId())
-        {
-            case R.id.menu_item_logoff:
-                Toast.makeText(CustomersActivity.this,R.string.logoff_toast,Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(CustomersActivity.this, LoginActivity.class );
+        switch(item.getItemId()){
+            case R.id.menu_item_home:
+                Intent intent = new Intent(this, HomeActivity.class );
                 startActivity(intent);
+                return true;
+            case R.id.menu_item_logoff:
+                FragmentManager fm = getSupportFragmentManager();
+                LogoutFragment dialog = new LogoutFragment();
+                dialog.show(fm, "Logout");
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
-        }*/
+        }
     }
 
     public void onPicClick()
@@ -60,17 +58,29 @@ public class NewCustomerActivity extends AppCompatActivity implements UserFragme
     {
         //get inputs
 
-        String last = findViewById(R.id.lastInputText).toString();
-        String first = findViewById(R.id.firstInputText).toString();
-        String phone = findViewById(R.id.phoneInputText).toString();
-        String email = findViewById(R.id.emailInputText).toString();
+        EditText lastInput = (EditText)findViewById(R.id.lastInputText);
+        EditText firstInput = (EditText)findViewById(R.id.firstInputText);
+        EditText phoneInput = (EditText)findViewById(R.id.phoneInputText);
+        EditText emailInput = (EditText)findViewById(R.id.emailInputText);
 
-        //TODO: ADD CUSTOMER TO CUSTOMERS TABLE
-        //CustomerDB db = new CustomerDB();
+        String  last=lastInput.getText().toString();
+        String  first=firstInput.getText().toString();
+        String  phone=phoneInput.getText().toString();
+        String  email=emailInput.getText().toString();
+        //add customer to db
+
+        CustomerDB db = new CustomerDB(this);
+
+        db.addNewCustomer(last,first,phone,email);
 
         //refresh screen
-        Intent intent = new Intent(this,NewCustomerActivity.class);
-        startActivity(intent);
+
+        lastInput.setText("");
+        firstInput.setText("");
+        phoneInput.setText("");
+        emailInput.setText("");
+        //confirm new customer
+        Toast.makeText(this,R.string.customer_added,Toast.LENGTH_SHORT).show();
     }
 
     @Override

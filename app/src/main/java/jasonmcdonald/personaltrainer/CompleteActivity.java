@@ -28,22 +28,19 @@ public class CompleteActivity extends AppCompatActivity  implements UserFragment
 
     public boolean onOptionsItemSelected(MenuItem item)
     {
-        FragmentManager fm = getSupportFragmentManager();
-        LogoutFragment dialog = new LogoutFragment();
-        dialog.show(fm, "Logout");
-        return true;
-
-        //THIS CODE IS FOR AN ALTERNATIVE LOG-OUT TOAST INSTEAD OF THE USER-CONFIRMATION DIALOG
-        /*switch(item.getItemId())
-        {
-            case R.id.menu_item_logoff:
-                Toast.makeText(CustomersActivity.this,R.string.logoff_toast,Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(CustomersActivity.this, LoginActivity.class );
+        switch(item.getItemId()){
+            case R.id.menu_item_home:
+                Intent intent = new Intent(this, HomeActivity.class );
                 startActivity(intent);
+                return true;
+            case R.id.menu_item_logoff:
+                FragmentManager fm = getSupportFragmentManager();
+                LogoutFragment dialog = new LogoutFragment();
+                dialog.show(fm, "Logout");
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
-        }*/
+        }
     }
     public void onCompClick(View view)
     {

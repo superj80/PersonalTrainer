@@ -26,6 +26,15 @@ public class Customer {
 
     }
 
+    public Customer(String last,String first,String phone,String email){
+        mId=UUID.randomUUID();
+        mFirstName=first;
+        mLastName=last;
+        mPhone=phone;
+        mEmail=email;
+
+    }
+
     public UUID getId() {return mId;}
     public String getFirstName()
     {

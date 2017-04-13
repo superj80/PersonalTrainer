@@ -7,5 +7,10 @@
         android:title="@string/logoff"
         android:icon="@android:drawable/ic_menu_add"
         />
+    <item
+        android:id="@+id/menu_item_home"
+        android:title="@string/home"
+        android:icon="@android:drawable/ic_menu_add"
+        />
 
 </menu>

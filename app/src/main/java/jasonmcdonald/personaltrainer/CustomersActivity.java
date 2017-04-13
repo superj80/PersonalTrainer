@@ -95,8 +95,10 @@ public class CustomersActivity extends AppCompatActivity  implements UserFragmen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customers);
         RecyclerView customerRecyclerView =  (RecyclerView) findViewById(R.id.customer_recycler_view);
+        CustomerDB db = new CustomerDB(this);
+        mCustList=db.getCustomers();
 
-        //CODE TO CREATE DUMMY TESTING DATA
+        /*//CODE TO CREATE DUMMY TESTING DATA
         for(int i=0;i<100;i++) {
             Customer customer = new Customer();
             customer.setFirstname("George");
@@ -104,7 +106,7 @@ public class CustomersActivity extends AppCompatActivity  implements UserFragmen
             customer.setPhone("555-272-4567");
             customer.setEmail("george1234@gmail.com");
             mCustList.add(customer);
-        }
+        }*/
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         customerRecyclerView.setLayoutManager(mLayoutManager);
@@ -127,22 +129,19 @@ public class CustomersActivity extends AppCompatActivity  implements UserFragmen
 
     public boolean onOptionsItemSelected(MenuItem item)
     {
-        FragmentManager fm = getSupportFragmentManager();
-        LogoutFragment dialog = new LogoutFragment();
-        dialog.show(fm, "Logout");
-        return true;
-
-        //THIS CODE IS FOR AN ALTERNATIVE LOG-OUT TOAST INSTEAD OF THE USER-CONFIRMATION DIALOG
-        /*switch(item.getItemId())
-        {
-            case R.id.menu_item_logoff:
-                Toast.makeText(CustomersActivity.this,R.string.logoff_toast,Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(CustomersActivity.this, LoginActivity.class );
+        switch(item.getItemId()){
+            case R.id.menu_item_home:
+                Intent intent = new Intent(this, HomeActivity.class );
                 startActivity(intent);
+                return true;
+            case R.id.menu_item_logoff:
+                FragmentManager fm = getSupportFragmentManager();
+                LogoutFragment dialog = new LogoutFragment();
+                dialog.show(fm, "Logout");
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
-        }*/
+        }
     }
 
 

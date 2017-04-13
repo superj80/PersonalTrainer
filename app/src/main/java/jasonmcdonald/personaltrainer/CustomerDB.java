@@ -67,7 +67,7 @@ public class CustomerDB {
                 KEY_CUSTOMER_ID, KEY_LAST_NAME_COLUMN, KEY_FIRST_NAME_COLUMN,KEY_PHONE_COLUMN,KEY_EMAIL_COLUMN };
 
         // Specify the where clause that will limit our results.
-        String where = KEY_CUSTOMER_ID + "=" + 1;
+        String where = null;//KEY_LAST_NAME_COLUMN + "=" + 1;
 
         // Replace these with valid SQL statements as necessary.
         String whereArgs[] = null;
@@ -81,6 +81,40 @@ public class CustomerDB {
                 whereArgs, groupBy, having, order);
         //
         return cursor;
+    }
+    public ArrayList<Customer> getCustomers() {
+        Cursor cursor = getAccessibleCustomer();
+
+        /**
+         * Listing 8-4: Extracting values from a Cursor
+         */
+
+
+        // Find the index to the column(s) being used.
+        int LAST_COLUMN_INDEX = cursor.getColumnIndexOrThrow(KEY_LAST_NAME_COLUMN);
+        int FIRST_COLUMN_INDEX = cursor.getColumnIndexOrThrow(KEY_FIRST_NAME_COLUMN);
+        int PHONE_COLUMN_INDEX = cursor.getColumnIndexOrThrow(KEY_PHONE_COLUMN);
+        int EMAIL_COLUMN_INDEX = cursor.getColumnIndexOrThrow(KEY_EMAIL_COLUMN);
+        // Iterate over the cursors rows.
+        // The Cursor is initialized at before first, so we can
+        // check only if there is a "next" row available. If the
+        // result Cursor is empty this will return false.
+        ArrayList<Customer> customerList = new ArrayList<>();
+        while (cursor.moveToNext()) {
+            String last = cursor.getString(LAST_COLUMN_INDEX);
+            String first = cursor.getString(FIRST_COLUMN_INDEX);
+            String phone = cursor.getString(PHONE_COLUMN_INDEX);
+            String email = cursor.getString(EMAIL_COLUMN_INDEX);
+            Customer customer = new Customer(last,first,phone,email);
+            customerList.add(customer);
+        }
+
+
+
+        // Close the Cursor when you've finished with it.
+        cursor.close();
+
+        return customerList;
     }
 
 
@@ -160,15 +194,15 @@ public class CustomerDB {
                 CUSTOMERS_TABLE + " (" + KEY_CUSTOMER_ID +
                 " integer primary key autoincrement, " +
                 KEY_LAST_NAME_COLUMN + " text not null, " +
-                KEY_FIRST_NAME_COLUMN+"text not null, "+
-                KEY_PHONE_COLUMN+"text not null, "+
-                KEY_EMAIL_COLUMN+"text not null ); ";
+                KEY_FIRST_NAME_COLUMN +" text not null, "+
+                KEY_PHONE_COLUMN +" text not null, "+
+                KEY_EMAIL_COLUMN +" text not null ); ";
         private static final String SESSIONS_TABLE_CREATE = "create table " +
                 SESSIONS_TABLE + " (" + KEY_SESSION_ID +
                 " integer primary key autoincrement, " +
                 KEY_CUSTOMER_ID + " INTEGER, " +
                 KEY_DATE_COLUMN + " text not null, " +
-                KEY_COMPLETED_COLUMN+"text not null ); ";
+                KEY_COMPLETED_COLUMN+" text not null ); ";
 
 
         public CustomerDBOpenHelper(Context context, String name,
