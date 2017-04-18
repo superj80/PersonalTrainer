@@ -37,7 +37,7 @@
         android:layout_height="180dp"
         android:layout_margin="10dp"
         android:onClick="onSigClick"
-        android:text="This is a button but it needs to be a sig capture thing." />
+        android:text="@string/sig_cap" />
 
     <Button
         android:id="@+id/compButton"

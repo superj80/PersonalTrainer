@@ -52,7 +52,7 @@ public class CompleteActivity extends AppCompatActivity  implements UserFragment
     }
     public void onSigClick(View view) {
         //TODO: make this a signature capturing thing.
-        //TODO take picture code
+
         Toast.makeText(this, R.string.signature, Toast.LENGTH_SHORT).show();
     }
     public void onCompClick(View view)

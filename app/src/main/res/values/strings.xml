@@ -55,4 +55,5 @@
     <string name="snapshot">Picture Added!</string>
     <string name="signature">Signature Captured!</string>
     <string name="delete_dialog">Delete Customer?</string>
+    <string name="sig_cap">This is a button but it needs to be a signature capture thing</string>
 </resources>
