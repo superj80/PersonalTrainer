@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import static jasonmcdonald.personaltrainer.R.id.lastInputText;
+
 
 
 public class NewCustomerActivity extends AppCompatActivity implements UserFragment.OnFragmentInteractionListener {
@@ -49,9 +49,10 @@ public class NewCustomerActivity extends AppCompatActivity implements UserFragme
         }
     }
 
-    public void onPicClick()
+    public void onPicClick(View view)
     {
         //TODO take picture code
+        Toast.makeText(this,R.string.snapshot,Toast.LENGTH_SHORT).show();
     }
 
     public void onAddClick(View view)

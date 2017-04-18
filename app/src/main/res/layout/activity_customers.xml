@@ -29,6 +29,7 @@
             android:id="@+id/customer_recycler_view"
             android:layout_weight="1"
 
+
     />
 
 </LinearLayout>

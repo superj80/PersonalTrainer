@@ -21,14 +21,13 @@
     <string name="scheduled">SCHEDULED</string>
     <string name="completed">COMPLETED</string>
     <string name="sessions">SESSIONS</string>
-    <string name="payment">PAYMENT</string>
+    <string name="add">ADD</string>
     <string name="new_customer">NEW TRAINEE!</string>
     <string name="customers">TRAINEES</string>
     <string name="complete">COMPLETE</string>
     <string name="add_session">ADD A SESSION!</string>
     <string name="date">Date</string>
     <string name="time">Time</string>
-    <string name="pay_for_session">Pay For Session</string>
     <string name="complete_session">Complete Session</string>
     <string name="previous">PREV</string>
     <string name="next">NEXT</string>
@@ -37,7 +36,6 @@
     <string name="phone">Phone</string>
     <string name="email">Email</string>
     <string name="take_a_picture">Take Picture</string>
-    <string name="add">ADD</string>
     <string name="card_number">Card Number</string>
     <string name="cvv">CVV</string>
     <string name="exp_date">Expiration Date</string>
@@ -50,5 +48,11 @@
     <string name="log_out_dialog">Logging You Out</string>
     <string name="home">Home Screen</string>
     <string name="customer_added">Fresh Meat!</string>
-
+    <string name="new_session_date">New Session Date</string>
+    <string name="session_completed">Session Complete!</string>
+    <string name="session_added">Session Added!</string>
+    <string name="purchaser">Name on Card</string>
+    <string name="snapshot">Picture Added!</string>
+    <string name="signature">Signature Captured!</string>
+    <string name="delete_dialog">Delete Customer?</string>
 </resources>

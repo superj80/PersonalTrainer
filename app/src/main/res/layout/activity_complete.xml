@@ -23,20 +23,21 @@
         android:id="@+id/nameAutoCompleteTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Customer Name"/>
+        />
 
     <AutoCompleteTextView
         android:id="@+id/dateAutoCompleteTextView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Session Date"/>
+        />
 
     <Button
         android:id="@+id/signButton"
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:layout_margin="10dp"
-        android:text="This is a button but it needs to be a sig capture thing."/>
+        android:onClick="onSigClick"
+        android:text="This is a button but it needs to be a sig capture thing." />
 
     <Button
         android:id="@+id/compButton"

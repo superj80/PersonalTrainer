@@ -1,7 +1,7 @@
 package jasonmcdonald.personaltrainer;
 
 
-import android.content.Context;
+
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
@@ -16,10 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
@@ -27,11 +24,11 @@ public class CustomersActivity extends AppCompatActivity  implements UserFragmen
 
     private List<Customer> mCustList= new ArrayList<>();
 
-    SQLiteDatabase customerDb = new CustomerDB.CustomerDBOpenHelper(this,null,null,1).getWritableDatabase() ;
+    //SQLiteDatabase customerDb = new CustomerDB.CustomerDBOpenHelper(this,null,null,1).getWritableDatabase() ;
 
 
 
-    private class CustomerHolder extends RecyclerView.ViewHolder implements View.OnClickListener
+    private class CustomerHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener
     {
         private Customer mCustomer;
         private TextView mFirstTextView;
@@ -41,6 +38,7 @@ public class CustomersActivity extends AppCompatActivity  implements UserFragmen
         private CustomerHolder(View itemView)
         {
             super(itemView);
+            itemView.setOnLongClickListener(this);
             itemView.setOnClickListener(this);
             mFirstTextView=(TextView) itemView.findViewById(R.id.firstname);
             mLastTextView=(TextView) itemView.findViewById(R.id.lastname);
@@ -61,7 +59,18 @@ public class CustomersActivity extends AppCompatActivity  implements UserFragmen
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(CustomersActivity.this, SessionsActivity.class );
+            String autoDisplayName= mFirstTextView.getText()+" "+mLastTextView.getText();
+            intent.putExtra("Name",autoDisplayName);
             startActivity(intent);
+        }
+        @Override
+        public boolean onLongClick(View v){
+            FragmentManager fm = getSupportFragmentManager();
+            DeleteFragment dialog = new DeleteFragment();
+            dialog.show(fm, "Delete Customer");
+            return true;
+
+
         }
     }
     private class RVAdapter extends RecyclerView.Adapter<CustomerHolder>
@@ -97,9 +106,8 @@ public class CustomersActivity extends AppCompatActivity  implements UserFragmen
         RecyclerView customerRecyclerView =  (RecyclerView) findViewById(R.id.customer_recycler_view);
         CustomerDB db = new CustomerDB(this);
         mCustList=db.getCustomers();
-
-        /*//CODE TO CREATE DUMMY TESTING DATA
-        for(int i=0;i<100;i++) {
+        //CODE TO CREATE DUMMY TESTING DATA
+        /*for(int i=0;i<100;i++) {
             Customer customer = new Customer();
             customer.setFirstname("George");
             customer.setLastname("Customer " + (i + 1));

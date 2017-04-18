@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class AddSessionActivity extends AppCompatActivity  implements UserFragment.OnFragmentInteractionListener {
 
@@ -15,6 +17,11 @@ public class AddSessionActivity extends AppCompatActivity  implements UserFragme
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_session);
+        TextView name = (TextView)findViewById(R.id.custNameDisplay);
+        String autoDisplayName= getIntent().getStringExtra("Name");
+        name.setText(autoDisplayName);
+
+
     }
 
     @Override
@@ -43,9 +50,15 @@ public class AddSessionActivity extends AppCompatActivity  implements UserFragme
         }
     }
 
-    public void onGoPayClick(View view)
+
+
+    public void onSubmitClick(View view)
     {
-        Intent intent = new Intent(AddSessionActivity.this, PaymentActivity.class );
+        //TODO  update Sessions table in db insert new session, do receipt stuff, do transaction stuff
+        Toast.makeText(this,R.string.session_added,Toast.LENGTH_SHORT).show();
+        String autoDisplayName= getIntent().getStringExtra("Name");
+        Intent intent = new Intent(this, SessionsActivity.class );
+        intent.putExtra("Name",autoDisplayName);
         startActivity(intent);
     }
 

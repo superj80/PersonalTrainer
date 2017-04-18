@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class CompleteActivity extends AppCompatActivity  implements UserFragment.OnFragmentInteractionListener {
@@ -15,7 +16,14 @@ public class CompleteActivity extends AppCompatActivity  implements UserFragment
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_complete);
+        TextView name = (TextView)findViewById(R.id.nameAutoCompleteTextView);
+        TextView date = (TextView)findViewById(R.id.dateAutoCompleteTextView2);
+        String autoDisplayName= getIntent().getStringExtra("Name");
+        String autoDisplayDate=getIntent().getStringExtra("Date");
+        name.setText(autoDisplayName);
+        date.setText(autoDisplayDate);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
@@ -42,10 +50,20 @@ public class CompleteActivity extends AppCompatActivity  implements UserFragment
                 return super.onOptionsItemSelected(item);
         }
     }
+    public void onSigClick(View view) {
+        //TODO: make this a signature capturing thing.
+        //TODO take picture code
+        Toast.makeText(this, R.string.signature, Toast.LENGTH_SHORT).show();
+    }
     public void onCompClick(View view)
     {
-        Intent intent = new Intent(CompleteActivity.this, NewCustomerActivity.class );
-        //TODO  complete session code
+
+        //TODO  update Sessions table in db completed = "completed"
+        Toast.makeText(this,R.string.session_completed,Toast.LENGTH_SHORT).show();
+        String autoDisplayName= getIntent().getStringExtra("Name");
+        Intent intent = new Intent(this, SessionsActivity.class );
+        intent.putExtra("Name",autoDisplayName);
+        startActivity(intent);
     }
 
     @Override

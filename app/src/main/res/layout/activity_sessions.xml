@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/sessions_header"
         android:ems="10"
-        android:text="Customer Name"/>
+        />
 
     <android.support.v7.widget.RecyclerView
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -42,25 +42,16 @@
 
 
 
-        <Button
-            android:id="@+id/compSessionButton"
-            android:layout_width="165dp"
-            android:layout_height="90dp"
-            android:layout_below="@id/sessions_recycler_view"
-            android:onClick="onGoCompClick"
-            android:layout_margin="15dp"
-            android:text="@string/complete"/>
+
 
         <Button
             android:id="@+id/addSessionButton"
-            android:layout_width="165dp"
+            android:layout_width="match_parent"
             android:layout_height="90dp"
             android:layout_margin="15dp"
             android:layout_below="@id/sessions_recycler_view"
-            android:layout_toEndOf="@id/compSessionButton"
-            android:layout_toRightOf="@id/compSessionButton"
             android:onClick="onGoAddClick"
-            android:text="@string/add"/>
+            android:text="@string/add_session"/>
 
 
 </RelativeLayout>

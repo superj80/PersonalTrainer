@@ -1,6 +1,7 @@
 package jasonmcdonald.personaltrainer;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -13,12 +14,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import java.util.ArrayList;
 
-import java.util.Date;
+
 import java.util.List;
 
 public class SessionsActivity extends AppCompatActivity implements UserFragment.OnFragmentInteractionListener  {
@@ -26,7 +28,8 @@ public class SessionsActivity extends AppCompatActivity implements UserFragment.
 
 
 
-    private class SessionHolder extends RecyclerView.ViewHolder
+
+    private class SessionHolder extends RecyclerView.ViewHolder implements View.OnClickListener
     {
         private Session mSession;
         private TextView mDateTextView;
@@ -39,16 +42,34 @@ public class SessionsActivity extends AppCompatActivity implements UserFragment.
             mDateTextView=(TextView) itemView.findViewById(R.id.date);
             mCompTextView=(TextView) itemView.findViewById(R.id.completed);
 
+
+            itemView.setOnClickListener(this);
         }
         private void bindSession(Session session)
         {
             mSession=session;
-            mDateTextView.setText(mSession.getDate().toString());
+            mDateTextView.setText(mSession.getDate());
             mCompTextView.setText(mSession.getCompleted());
-
+            if(mCompTextView.getText()=="SCHEDULED"){
+                mCompTextView.setTextColor(Color.BLUE);
+            }
 
 
         }
+        @Override
+        public void onClick(View v) {
+
+            if(mCompTextView.getText()=="SCHEDULED"){
+                String autoDisplayName= getIntent().getStringExtra("Name");
+                Intent intent = new Intent(SessionsActivity.this, CompleteActivity.class );
+                intent.putExtra("Name",autoDisplayName);
+                intent.putExtra("Date",mDateTextView.getText());
+                startActivity(intent);
+            }
+            else{
+                //If session is already completed then do nothing.
+            }
+         }
 
 
     }
@@ -84,13 +105,21 @@ public class SessionsActivity extends AppCompatActivity implements UserFragment.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sessions);
         RecyclerView sessionRecyclerView =  (RecyclerView) findViewById(R.id.sessions_recycler_view);
+        TextView name = (TextView)findViewById(R.id.custNameText);
+        String autoDisplayName= getIntent().getStringExtra("Name");
+        name.setText(autoDisplayName);
+        //TODO: GET/CREATE AND DISPLAY SESSIONS TABLE FROM DB
+
 
         //CODE TO CREATE DUMMY TESTING DATA
         for(int j=0;j<10;j++)
         {
             Session session = new Session();
-            session.setDate("1/1/2017");
-            session.setCompleted("Completed");
+            session.setDate(j+"/"+(j+1)+"/2017");;
+            if (j%2==0) {
+                session.setCompleted("Completed");
+
+            }
             mSessionList.add(session);
         }
 
@@ -134,14 +163,12 @@ public class SessionsActivity extends AppCompatActivity implements UserFragment.
     public void onGoAddClick (View view)
     {
         Intent intent = new Intent(SessionsActivity.this, AddSessionActivity.class );
+        String autoDisplayName= getIntent().getStringExtra("Name");
+        intent.putExtra("Name",autoDisplayName);
         startActivity(intent);
     }
 
-    public void onGoCompClick (View view)
-    {
-        Intent intent = new Intent(SessionsActivity.this, CompleteActivity.class );
-        startActivity(intent);
-    }
+
 
     @Override
     public void onFragmentInteraction(Uri uri) {

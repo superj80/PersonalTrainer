@@ -1,10 +1,9 @@
 package jasonmcdonald.personaltrainer;
 
-import java.sql.Time;
-import java.util.Date;
+
 import java.util.UUID;
 
-import static jasonmcdonald.personaltrainer.R.string.date;
+
 
 /**
  * Created by Administrator on 4/6/2017.
