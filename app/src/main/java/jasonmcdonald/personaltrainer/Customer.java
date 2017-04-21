@@ -1,6 +1,8 @@
 package jasonmcdonald.personaltrainer;
 
 
+import android.graphics.Bitmap;
+
 import java.util.UUID;
 
 /**
@@ -11,8 +13,12 @@ public class Customer {
     private UUID mId;
     private String mFirstName;
     private String mLastName;
+    //TODO: PHONE NUMBER FORMATTING
     private String mPhone;
+    //TODO: EMAIL FORMATTING
     private String mEmail;
+    private Bitmap mImageBitmap;
+
 
 
     public Customer()
@@ -22,6 +28,8 @@ public class Customer {
         mLastName=" ";
         mPhone=" ";
         mEmail=" ";
+        mImageBitmap=null;
+
 
     }
 
@@ -31,10 +39,13 @@ public class Customer {
         mLastName=last;
         mPhone=phone;
         mEmail=email;
+        mImageBitmap=null;
+
 
     }
 
     public UUID getId() {return mId;}
+    public void setId(String id) {mId = UUID.fromString(id);}
     public String getFirstName()
     {
         return mFirstName;
@@ -55,18 +66,21 @@ public class Customer {
     {
         return mPhone;
     }
-    public void setPhone(String phone)
-    {
-        mPhone=phone;
-    }
+    public void setPhone(String phone) {mPhone=phone;}
     public String getEmail()
     {
         return mEmail;
     }
-    public void setEmail(String email)
-    {
-        mEmail=email;
+    public void setEmail(String email) {mEmail=email;}
+
+    //CREATES NAME FOR CUSTOMER PHOTO FILE FROM UUID
+    public String getPictureFilename(UUID id){
+        return "IMG_"+id.toString()+".jpg";
     }
+
+
+
+
 
 
 }

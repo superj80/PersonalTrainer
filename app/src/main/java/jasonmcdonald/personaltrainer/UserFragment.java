@@ -75,34 +75,9 @@ public class UserFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_user, container, false);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
-    {
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.main_menu, menu);
-    }
 
 
-    public boolean onOptionsItemSelected(MenuItem item, Context context)
-    {
-      switch(item.getItemId())
-      {
-          case R.id.menu_item_logoff:
-              Toast.makeText(context,R.string.logoff_toast,Toast.LENGTH_SHORT).show();
-              Intent intent = new Intent(context, LoginActivity.class );
-              startActivity(intent);
-              return true;
-          default:
-              return super.onOptionsItemSelected(item);
-      }
-    }
+
 
 
 

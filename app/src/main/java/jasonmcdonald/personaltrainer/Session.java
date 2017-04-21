@@ -11,7 +11,9 @@ import java.util.UUID;
 
 public class Session {
     private UUID mId;
+    //TODO: CHANGE TO DATE
     private String mDate;
+    //TODO: CHANGE TO TIME
     private String mTime;
     private String mCompleted;
 
@@ -35,6 +37,7 @@ public class Session {
     {
         mDate=date;
     }
+    //TODO: ADD TIME TO SESSIONS TABLE AND SESSION_ITEM.XML
     public String getTime()
     {
         return mTime;

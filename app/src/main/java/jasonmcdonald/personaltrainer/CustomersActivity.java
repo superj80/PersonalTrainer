@@ -3,8 +3,9 @@ package jasonmcdonald.personaltrainer;
 
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
+
 import android.net.Uri;
+
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,7 +16,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +28,7 @@ public class CustomersActivity extends AppCompatActivity  implements UserFragmen
 
     private List<Customer> mCustList= new ArrayList<>();
 
-    //SQLiteDatabase customerDb = new CustomerDB.CustomerDBOpenHelper(this,null,null,1).getWritableDatabase() ;
+
 
 
 
@@ -35,6 +39,7 @@ public class CustomersActivity extends AppCompatActivity  implements UserFragmen
         private TextView mLastTextView;
         private TextView mPhoneTextView;
         private TextView mEmailTextView;
+        private ImageView mPicImageView;
         private CustomerHolder(View itemView)
         {
             super(itemView);
@@ -44,10 +49,12 @@ public class CustomersActivity extends AppCompatActivity  implements UserFragmen
             mLastTextView=(TextView) itemView.findViewById(R.id.lastname);
             mPhoneTextView=(TextView) itemView.findViewById(R.id.phone);
             mEmailTextView=(TextView) itemView.findViewById(R.id.email);
+            mPicImageView=(ImageView) itemView.findViewById(R.id.customer_image);
         }
         private void bindCustomer(Customer customer)
         {
             mCustomer=customer;
+
             mFirstTextView.setText(mCustomer.getFirstName());
             mLastTextView.setText(mCustomer.getLastName());
             mPhoneTextView.setText(mCustomer.getPhone());
@@ -151,6 +158,8 @@ public class CustomersActivity extends AppCompatActivity  implements UserFragmen
                 return super.onOptionsItemSelected(item);
         }
     }
+
+
 
 
 

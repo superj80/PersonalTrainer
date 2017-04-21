@@ -11,11 +11,14 @@
         android:layout_weight="1"
         android:textSize="15sp"
         android:padding="10dp"/>
-
+        <!--TESTING STRING
+        android:text="12/12/2018"-->
     <TextView
         android:id="@+id/completed"
         android:layout_width="match_parent"
         android:layout_height="75dp"
         android:layout_weight="1"
         android:textSize="15sp"/>
+        <!--TESTING STRING
+        android:text="SCHEDULED"-->
 </LinearLayout>

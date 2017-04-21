@@ -16,6 +16,7 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
+
 public class CustomerDB {
     /**
      * Listing 8-1: Skeleton code for contract class constants
@@ -35,6 +36,8 @@ public class CustomerDB {
             "PHONE_COLUMN";
     public static final String KEY_EMAIL_COLUMN =
             "EMAIL_COLUMN";
+
+
     //SESSIONS TABLE
     public static final String KEY_DATE_COLUMN =
             "DATE_COLUMN";
@@ -64,7 +67,7 @@ public class CustomerDB {
         // Specify the result column projection. Return the minimum set
         // of columns required to satisfy your requirements.
         String[] result_columns = new String[] {
-                KEY_CUSTOMER_ID, KEY_LAST_NAME_COLUMN, KEY_FIRST_NAME_COLUMN,KEY_PHONE_COLUMN,KEY_EMAIL_COLUMN };
+                KEY_CUSTOMER_ID, KEY_LAST_NAME_COLUMN, KEY_FIRST_NAME_COLUMN,KEY_PHONE_COLUMN,KEY_EMAIL_COLUMN};
 
         // Specify the where clause that will limit our results.
         String where = null;//KEY_LAST_NAME_COLUMN + "=" + 1;
@@ -119,7 +122,7 @@ public class CustomerDB {
 
 
 
-    public void addNewCustomer(String lastName, String firstName, String phone, String email) {
+    public void addNewCustomer(Customer customer) {
         /**
          * Listing 8-5: Inserting new rows into a database
          */
@@ -127,10 +130,11 @@ public class CustomerDB {
         ContentValues newValues = new ContentValues();
 
         // Assign values for each row.
-        newValues.put(KEY_LAST_NAME_COLUMN, lastName);
-        newValues.put(KEY_FIRST_NAME_COLUMN, firstName);
-        newValues.put(KEY_PHONE_COLUMN, phone);
-        newValues.put(KEY_EMAIL_COLUMN, email);
+        newValues.put(KEY_LAST_NAME_COLUMN, customer.getLastName());
+        newValues.put(KEY_FIRST_NAME_COLUMN, customer.getFirstName());
+        newValues.put(KEY_PHONE_COLUMN, customer.getPhone());
+        newValues.put(KEY_EMAIL_COLUMN, customer.getEmail());
+
 
         // [ ... Repeat for each column / value pair ... ]
 
@@ -138,7 +142,7 @@ public class CustomerDB {
         SQLiteDatabase db = CustomerDBOpenHelper.getWritableDatabase();
         db.insert(CustomerDBOpenHelper.CUSTOMERS_TABLE, null, newValues);
     }
-
+    //TODO: Fix update method
     public void updateCustomerValue(int customerId, float newCustomerValue) {
         /**
          * Listing 8-6: Updating a database row
@@ -164,7 +168,7 @@ public class CustomerDB {
         db.update(CustomerDBOpenHelper.CUSTOMERS_TABLE, updatedValues,
                 where, whereArgs);
     }
-
+    //TODO: Fix delete method
     public void deleteCustomers() {
         /**
          * Listing 8-7: Deleting a database row
