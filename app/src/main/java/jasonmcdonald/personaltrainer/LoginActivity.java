@@ -195,13 +195,13 @@ public class LoginActivity extends FragmentActivity implements LoaderCallbacks<C
     }
 
     private boolean isEmailValid(String email) {
-        //TODO: Replace this with your own logic
-        return email.contains("@");
+
+        return email.equals("jdoe");
     }
 
     private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
-        return password.length() > 4;
+
+        return password.equals("welcome1");
     }
 
     /**
